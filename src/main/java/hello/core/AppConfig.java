@@ -17,6 +17,10 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService() {
+        /* 스프링은 빈을 생성하고, 의존관계를 주입하는 단계가 나누어져 있다.
+         * 그런데 이렇게 자바 코드로 스프링 빈을 등록하면
+         * 생성자를 호출하면서 의존관계 주입도 한번에 처리된다.
+         * => 순서를 무시하게 됨 PDF: 4- 3p*/
         return new MemberServiceImpl(memberRepository());
     }
 
