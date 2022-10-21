@@ -11,8 +11,12 @@ import hello.core.order.OderServiceImpl;
 public class OderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OderService oderService = new OderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+
+//        MemberService memberService = new MemberServiceImpl();
+//        OderService oderService = new OderServiceImpl();
+        MemberService memberService = appConfig.memberService();
+        OderService oderService = appConfig.oderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
