@@ -10,10 +10,14 @@ import hello.core.member.MemoryMemberRepository;
 public class OderServiceImpl implements OderService {
 
     private final MemberRepository repository = new MemoryMemberRepository();
-    //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-    // PDF 3- 4p
-    //OderServiceImpl 클라이언트 코드가 수정 => OCP 위반
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+
+    // 구현체를 지워 인터페이스에만 의존하도록 설계
+    // => DIP 를 지킴
+    // 하지만 구현체가 없어 널포인트익셉션 발생
+    // 누군가가 클라이언트인 OrderServiceImpl 에 DiscountPolicy 의 구현 객체를
+    // 대신 생성하고 주입해주어야 한다
+    private DiscountPolicy discountPolicy;
 
     @Override
     public Oder createOrder(Long memberId, String itemName, int itemPrice) {
