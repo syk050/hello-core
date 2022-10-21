@@ -15,7 +15,7 @@ public class OderServiceImpl implements OderService {
     public Oder createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = repository.findById(memberId);
         // OCP 적용
-        // OderService는 할인이 얼마인지 결과만 받음
+        // OderService 는 할인이 얼마인지 결과만 받음
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
         return new Oder(memberId, itemName, itemPrice, discountPrice);
