@@ -22,6 +22,12 @@ public class SingletonService {
     }
 
     public static void main(String[] args) {
-
+        /* 싱글톤 패턴 문제점
+         * 싱글톤 패턴을 구현하는 코드 자체가 많이 들어간다.
+         * 의존관계상 클라이언트가 구체 클래스에 의존한다.
+         * => DIP를 위반한다.
+         * 클라이언트가 구체 클래스에 의존해서 OCP 원칙을 위반할 가능성이 높다.
+         * 테스트하기 어렵다.
+         */
     }
 }
