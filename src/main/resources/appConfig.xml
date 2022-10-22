@@ -8,7 +8,7 @@
         <constructor-arg name="repository" ref="memberRepository" />
     </bean>
 
-    <bean id="orderService" class="hello.core.order.OderServiceImpl">
+    <bean id="orderService" class="hello.core.order.OrderServiceImpl">
         <constructor-arg name="repository" ref="memberRepository"/>
         <constructor-arg name="discountPolicy" ref="discountPolicy" />
     </bean>
