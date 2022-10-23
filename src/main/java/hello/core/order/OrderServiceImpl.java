@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -24,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository repository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository repository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         // 생성자 주입 이점 PDF: 7- 7p
         this.repository = repository;
         // 완전히 똑같은 타입의 스프링 빈이 2개 있을 때
