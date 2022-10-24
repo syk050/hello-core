@@ -1,9 +1,6 @@
 package hello.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient{
 
     private String url;
 
@@ -29,8 +26,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
     }
 
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    public void init() throws Exception {
         // 의존관계 주입이 끝나면 호출 PDF: 8- 5p
         System.out.println("NetworkClient.afterPropertiesSet");
 
@@ -38,8 +34,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
+    public void close() throws Exception {
         System.out.println("NetworkClient.destroy");
 
         disconnect();
