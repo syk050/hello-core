@@ -7,6 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Scope;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -31,11 +32,13 @@ public class SingletonWithPrototypeTest1 {
     @Scope("singleton")
     static class ClientBean {
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+//        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> prototypeBeanProvider;
 
         public int logic() {
             // 내부에서는 스프링 컨테이너를 통해 해당 빈을 찾아서 반환한다. (DL)
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+//            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = prototypeBeanProvider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
