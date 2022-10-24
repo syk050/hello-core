@@ -17,15 +17,17 @@ public class LogDemoController {
     // 의존성 주입을 하려고 하는데 MyLogger가 request 스코프,
     // http request가 들어오지 않아 MyLogger를 사용할 수 없음
     // => 의존성 주입을 지연시킴 => provider 사용
-//    private final MyLogger myLogger;
+    private final MyLogger myLogger;
 
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+//    private final ObjectProvider<MyLogger> myLoggerProvider;
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) {
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.getObject();
+//        MyLogger myLogger = myLoggerProvider.getObject();
+
+        System.out.println("myLogger = " + myLogger.getClass());
         myLogger.setRequestURL(requestURL);
 
         myLogger.log("controller test");
